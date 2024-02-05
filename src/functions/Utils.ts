@@ -51,16 +51,21 @@ function evolvedPokemon( pokemon: Pokemon[] ): Pokemon[] | null {
 
 // 5. Given an array of integers and a target number, return indices of the two numbers such that they add up to target
 
-function findIndicesForTargetNumber( numbers: Number[], targetNumber: number ):string | null {
-  if(numbers.length === 0){
+function findIndicesForTargetNumber( nums: number[], targetNumber: number ):string | null {
+  if(nums.length === 0){
     return null
   }
-  let index1;
-  let index2;
-  numbers.forEach((num:number) => {
-    
-  })
-  return '0'
+  for (let i = 0; i <= nums.length; i++){
+    for(let j = 0; j <= nums.length; j++) {
+      if(nums[i]+ nums[j] === targetNumber && i !== j){
+        return (`The numbers in indices ${i} and ${j} add up to ${targetNumber}.`)
+      }
+      if(nums[i]+ nums[j] === targetNumber && i === j){
+        return (`The numbers in the same indices ${i} add up to ${targetNumber}.`)
+      }
+    }
+  }
+  return ('None of the numbers in the array add up to the target number.')
 }
 
 export { sumNum, sumNumPositivesOnly, highestLevelPokemon, evolvedPokemon, findIndicesForTargetNumber}
